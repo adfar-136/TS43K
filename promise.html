@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="main">
+        <h1>Hello welcome</h1>
+    </div>
+    <script>
+        var element = document.getElementById("main");
+        console.log(element);
+        var url = "https:/newsapi.org/v2/everything?q=tesla&from=2023-12-11&sortBy=publishedAt&apiKey=28a2c6b3aa1945c2afd8012e42fdac9e"
+        console.log(fetch(url));
+        fetch(url).then((result)=>result.json()).then((response)=>{
+       response.articles.map((item,index)=>{
+          var listItem = document.createElement("li");
+          listItem.innerHTML = item.author;
+          element.appendChild(listItem)
+           
+       })
+        })
+    </script>
+</body>
+</html>
