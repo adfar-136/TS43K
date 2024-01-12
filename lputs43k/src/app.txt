@@ -1,0 +1,50 @@
+//Props
+import About from "./components/About"
+function App() {
+  var name="Adfar Rasheed";
+  var age=26;
+  var gender="Male";
+  return (
+    <div className="App">
+      <h1>Adfar Rasheed</h1>
+      <About name={name} age={age} gender={gender}/>
+      <About name="lpu" age={1000} gender="female"/>
+      
+    </div>
+  );
+}
+
+export default App;
+
+
+import React from 'react'
+import Blog from './components/Blog'
+
+function App() {
+  return (
+    <div>
+      <Blog name="Adfar" age={34} gender="male"/>
+    </div>
+  )
+}
+
+export default 
+
+
+import React from 'react'
+import Header from './components/Header';
+import Blog from "./components/Blog"
+
+function App() {
+  return (
+    <div>
+      <Header>
+        <h1>Hello Header</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quasi quos consectetur assumenda soluta quae blanditiis praesentium enim ut reiciendis?</p>
+        <Blog name="Blog" age="34" gender="male"/>
+      </Header>
+    </div>
+  )
+}
+
+export default App
