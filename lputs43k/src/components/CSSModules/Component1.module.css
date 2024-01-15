@@ -1,0 +1,19 @@
+.heading1{
+    color: red;
+    padding: 30px;
+    background-color: orange;
+    font-size: 40px;
+} 
+.heading2{
+    font-size: 50px;
+}
+.para1{
+    color: blue;
+    padding: 20px;
+    border: 2px solid green;
+}
+.main-content{
+    height: 300px;
+    width: 400px;
+    background-color: rgb(34,56,76);
+}

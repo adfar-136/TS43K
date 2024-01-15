@@ -1,0 +1,11 @@
+.heading2{
+    color: magenta;
+    background-color: aqua;
+    padding: 40px;
+    font-size: 33px;
+}
+.para2{
+    color: burlywood;
+    background-color: khaki;
+    border: 2px solid red;
+}
