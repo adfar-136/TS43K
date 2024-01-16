@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
-import Form from './components/Form'
+import React,{useEffect, useState} from 'react'
 
 function App() {
-  const [username,setUsername] = useState("");
-  console.log(username)
+  const [count,setCOunt] = useState(0);
+  useEffect(()=>{
+    console.log("useEffect");
+    const fun = ()=>console.log("event")
+    document.addEventListener("click",fun)
+  
+    return ()=>{
+      document.removeEventListener("click",fun)
+    }
+    // setInterval(()=>{
+    //   console.log("I am seide Effec")
+    // },3000)
+  })
   return (
     <div>
-      {/* <form>
-        <input type="text" placeholder='Enter username' value={username} 
-        onChange={(e)=>{setUsername(e.target.value)}}/>
-        <h1>{username}</h1>
-        <input type="button" value="Submit" />
-        <button onClick={(e)=>{e.preventDefault();setUsername("hello")}}>Update</button>
-      </form> */}
-      <Form/>
+      <h1>{count}</h1>
+      <button  onClick={()=>setCOunt(count+1)}>Increment count</button>
     </div>
   )
 }

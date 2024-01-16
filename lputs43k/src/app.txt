@@ -254,3 +254,104 @@ function App() {
 }
 
 export default App
+
+//controlled forms 
+import React, { useState } from 'react'
+
+function Form() {
+    const [email,setEmail] = useState("")
+    const [password,setPassword] = useState("")
+    const [condition,setCondition] = useState(true)
+    console.log(email,password);
+    const handleSubmit =(e)=>{
+        e.preventDefault();
+        setCondition(false)
+    }
+  return (
+    <div>
+        <form onSubmit={handleSubmit}>
+            
+            <input type="email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+            <input type="password" value={password} 
+            onChange={(e)=>{setPassword(e.target.value)}}/>
+            <input type="submit" value="Submit"/>
+
+        </form>
+        {!condition && (
+        <>
+            <h1>Your email is :{email} </h1>
+            <h1>Your password is :{password} </h1>
+        </>
+            
+        )}
+        
+    </div>
+  )
+}
+
+export default Form
+
+import React, { useState } from 'react'
+import Form from './components/Form'
+
+function App() {
+  const [username,setUsername] = useState("");
+  console.log(username)
+  return (
+    <div>
+      {/* <form>
+        <input type="text" placeholder='Enter username' value={username} 
+        onChange={(e)=>{setUsername(e.target.value)}}/>
+        <h1>{username}</h1>
+        <input type="button" value="Submit" />
+        <button onClick={(e)=>{e.preventDefault();setUsername("hello")}}>Update</button>
+      </form> */}
+      <Form/>
+    </div>
+  )
+}
+
+export default App
+
+import React, { useState } from 'react'
+// import Form from './components/Form'
+
+function App() {
+  const [input,setInput] = useState({
+     username:""
+  });
+  return (
+    <div>
+      <form>
+        <input type="text" placeholder='Enter username'  value={input.username}
+        onChange={(e)=>{setInput((prev)=>({...prev,username:e.target.value}))}}/>
+        {input.username}
+        <input type="button" value="Submit" />
+        <button onClick={(e)=>{e.preventDefault();}}>Update</button>
+      </form>
+    </div>
+  )
+}
+
+export default App
+
+useEffect hook 
+import React,{useEffect, useState} from 'react'
+
+function App() {
+  const [count,setCOunt] = useState(0);
+  const [number,setNumber] = useState(0);
+  useEffect(()=>{
+    console.log("useEffect");
+  },[count,number])
+  return (
+    <div>
+      <h1>{count}</h1>
+      <h1>{number}</h1>
+      <button onClick={()=>setCOunt(count+1)}>Increment count</button>
+      <button onClick={()=>setNumber(number+1)}>Increment Number</button>
+    </div>
+  )
+}
+
+export default App
