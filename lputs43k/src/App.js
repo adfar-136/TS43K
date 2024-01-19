@@ -1,10 +1,10 @@
 import React from 'react'
-import Pomodoro from './components/Pomodoro'
-
+import News from './NewsApp/News'
+import "./NewsApp/News.css"
 function App() {
   return (
-    <div>
-      <Pomodoro/>
+    <div className='app'>
+      <News/>
     </div>
   )
 }
