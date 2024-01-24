@@ -1,13 +1,4 @@
-.main{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+
 .active{
-  background-color: white;
-  color: black;
-}
-.not-active{
-  background-color: black;
-  color: white;
+  text-decoration: underline solid blue 5px;
 }

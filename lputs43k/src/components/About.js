@@ -1,11 +1,12 @@
-import Contact from "./Contact";
+import { useContext } from "react";
+import { userContext } from "./Providers/UserProvider";
 
-function About(props){
-    console.log(props)
+function About(){
+    const {user,setUser} = useContext(userContext)
+    console.log()
     return (
         <div>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur aliquid praesentium modi provident quisquam, cum omnis excepturi, amet voluptas possimus quasi cumque architecto reiciendis in?</p>
-            <Contact namee={props.name} age={props.age} gender={props.gender}/>
+            <h1>I am {user}</h1>
             
         </div>
     )

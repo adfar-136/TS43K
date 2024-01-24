@@ -407,3 +407,37 @@ function App() {
 }
 
 export default App
+
+
+useReducer  
+import React from 'react'
+import { useReducer } from 'react'
+import { useState } from 'react'
+import Background from './Background';
+const reducer =(state,action)=>{
+  console.log(state,action);
+  if(action === "one") {
+    return {count:state.count+1}
+  }else if(action === "two"){
+    return {count:state.count+2}
+  }else if(action === "three"){
+    return {count:state.count+3}
+  }else if(action=== "four"){
+    return {count:state.count+4}
+  } 
+  return state
+}
+export default function App() {
+  // const [count,setCount]  = useState(0)
+  const [state,dispatch] = useReducer(reducer,{count:0})
+  return (
+    <div>
+      <Background/>
+      <h1>{state.count}</h1>
+      <button onClick={()=>dispatch("one")}>Increment by 1</button>
+      <button onClick={()=>dispatch("two")}>Increment by 2</button>
+      <button onClick={()=>dispatch("three")}>Increment by 3</button>
+      <button onClick={()=>dispatch("four")}>Increment by 4</button>
+    </div>
+  )
+}
