@@ -2,3 +2,15 @@
 .active{
   text-decoration: underline solid blue 5px;
 }
+
+.modal{
+  height: 100%;
+  width: 100%;
+  background-color: gray;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+}

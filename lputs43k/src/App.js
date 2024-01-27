@@ -1,37 +1,49 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './components/routes/Home'
-import About from './components/routes/About'
-import Blog from './components/routes/Blog'
-import Contatc from './components/routes/Contatc'
-import User from './components/routes/User'
-import UserDetails from './components/routes/UserDetails'
-import PhoneNumber from './components/routes/PhoneNumber'
-import Keyy from './components/routes/Keyy'
-import Student from './components/routes/Student'
-import AsliHome from './components/routes/AsliHome'
+import { useState } from 'react'
 
 export default function App() {
+  const [inputs,setInputs] = useState({
+    name:"",
+    email:"",
+    password:""
+  })
+  const handleChange=(e)=>{
+    // console.log(e.target)
+    const {name,value} = e.target;
+    setInputs({...inputs,[name]:value})
+  }
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    localStorage.setItem("name",inputs.name)
+    localStorage.setItem("email",inputs.email)
+    localStorage.setItem("password",inputs.password)
+    // localStorage.setItem("userInfo",JSON.stringify(inputs))
+    setInputs({
+      name:"",
+      email:"",
+      password:""
+    })
+  }
+  const handleRemove = ()=>{
+    localStorage.removeItem('name');
+    localStorage.removeItem("email")
+    localStorage.removeItem("password")
+  }
   return (
     <div>
-      <BrowserRouter>
-      
-
-        <Routes>
-          <Route path='/' element={<AsliHome/>}>
-             <Route index element={<Home/>}/>
-             <Route path='/about' element={<About/>}/>
-             <Route path='/blog' element={<Blog/>}/>
-             <Route path='/contact' element={<Contatc/>}>
-                <Route path='key' element={<Keyy/>}/>
-                <Route path='student' element={<Student/>}/>
-             </Route>
-             <Route path='/user' element={<User/>}/>
-             <Route path='/user/:idd' element={<UserDetails/>}/>
-             <Route path='/user/:id/phone/:number' element={<PhoneNumber/>}/>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+       <form onSubmit={handleSubmit}>
+         <input type="text" value={inputs.name}
+         onChange={handleChange} name='name'/> <br /> <br />
+         <input type="email" value={inputs.email} 
+         onChange={handleChange} name='email'/> <br /> <br />
+         <input type="password" value={inputs.password}
+         onChange={handleChange} name="password"/> <br /> <br />
+         <input type="submit" value="Submit" />
+       </form>
+       {localStorage.getItem("name") && (
+        <h1>{localStorage.getItem("name")}</h1>
+       )}
+       <button onClick={handleRemove}>Remove</button>
     </div>
   )
 }
