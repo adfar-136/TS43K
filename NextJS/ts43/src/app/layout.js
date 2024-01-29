@@ -1,13 +1,13 @@
+import React from 'react'
 
-
-export default function RootLayout({ children }) {
+export default function RootLayout({children}) {
   return (
-    <html lang="en">
+    <html>
       <body>
         {children}
-        <h1>hello</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, sit!</p>
+      <h1>Root Layout component</h1>
       </body>
+      
     </html>
-  );
+  )
 }
