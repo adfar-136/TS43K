@@ -500,3 +500,118 @@ export default function PokemonCard({name,id,height,weight,image}) {
     </div>
   )
 }
+
+
+//localstorage 
+import React from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [inputs,setInputs] = useState({
+    name:"",
+    email:"",
+    password:""
+  })
+  const handleChange=(e)=>{
+    // console.log(e.target)
+    const {name,value} = e.target;
+    setInputs({...inputs,[name]:value})
+  }
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+    localStorage.setItem("name",inputs.name)
+    localStorage.setItem("email",inputs.email)
+    localStorage.setItem("password",inputs.password)
+    // localStorage.setItem("userInfo",JSON.stringify(inputs))
+    setInputs({
+      name:"",
+      email:"",
+      password:""
+    })
+  }
+  const handleRemove = ()=>{
+    localStorage.removeItem('name');
+    localStorage.removeItem("email")
+    localStorage.removeItem("password")
+  }
+  return (
+    <div>
+       <form onSubmit={handleSubmit}>
+         <input type="text" value={inputs.name}
+         onChange={handleChange} name='name'/> <br /> <br />
+         <input type="email" value={inputs.email} 
+         onChange={handleChange} name='email'/> <br /> <br />
+         <input type="password" value={inputs.password}
+         onChange={handleChange} name="password"/> <br /> <br />
+         <input type="submit" value="Submit" />
+       </form>
+       {localStorage.getItem("name") && (
+        <h1>{localStorage.getItem("name")}</h1>
+       )}
+       <button onClick={handleRemove}>Remove</button>
+    </div>
+  )
+}
+
+//useMemo 
+
+import React, { useMemo } from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [count,setCount] = useState(0)
+  const [number,setNumber] = useState(1000)
+  const isEven = useMemo(()=>{
+    let i =0;
+    while(i<2000000000) i++;
+    return count %2 === 0;
+  },[count])
+  return (
+    <div>
+        <h1>Count: {count}</h1>
+        <button onClick={()=>setCount(count+1)}>Increment</button>
+        <h1>{isEven?"EVEN":"ODD"}</h1>
+        
+        <h1>Number:{number}</h1>
+        <button onClick={()=>setNumber(number-1)}>Decrement</button>
+    </div>
+  )
+}
+
+
+//useCallback 
+
+import React, { useCallback, useState } from 'react'
+let x = new Set()
+export default function App() {
+  const [count,setCount] = useState(0);
+  const [number,setNumber] = useState(1000);
+  const handleIncrement=useCallback(()=>{
+    setCount(count+1)
+  },[count])
+  const handleDecrement=useCallback(()=>{
+    setCount(count-1)
+  },[count])
+  const handleIncrementNumber=useCallback(()=>{
+    setNumber(number+1)
+  },[number])
+  const handleDecrementNumber=useCallback(()=>{
+    setNumber(number-1)
+  },[number])
+  x.add(handleDecrement)
+  x.add(handleIncrement)
+  x.add(handleDecrementNumber)
+  x.add(handleIncrementNumber)
+  alert(x.size)
+  return (
+    <div>
+      <h1>count: {count}</h1>
+      <button onClick={handleIncrement}>Increment Count</button>
+      <button onClick={handleDecrement}>Increment Count</button>
+      <h1>Number: {number}</h1>
+      <button onClick={handleIncrementNumber}>Increment Number</button>
+      <button onClick={handleDecrementNumber}>Increment Number</button>
+    </div>
+  )
+}
+

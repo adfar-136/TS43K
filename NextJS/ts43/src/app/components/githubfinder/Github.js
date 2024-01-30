@@ -3,6 +3,7 @@ import React,{useState} from 'react'
 import Inputform from './Inputform'
 import Displaydata from './Displaydata'
 import Repolist from './Repolist'
+import Pagination from './Pagination'
 
 export default function Github() {
     const [userData,setUserData] = useState(null)
@@ -28,12 +29,15 @@ export default function Github() {
     const lastIndex = currentPage* perPage;
     const startIndex = lastIndex -perPage;
     const currentRepo = repoData.slice(startIndex,lastIndex)
-    
+    const paginate =(pageNumber) =>{
+      setCurrentPage(pageNumber)
+    }
   return (
     <div>
         <Inputform fetchData={fetchData}/>
        {userData && <Displaydata user={userData}/>}
        {repoData.length > 0 && <Repolist repos={currentRepo} />}
+       <Pagination length={repoData.length} paginate={paginate} perPage={perPage}/>
     </div>
   )
 }

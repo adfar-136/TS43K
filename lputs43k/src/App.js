@@ -1,49 +1,21 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import Modal from './Modal'
 
 export default function App() {
-  const [inputs,setInputs] = useState({
-    name:"",
-    email:"",
-    password:""
-  })
-  const handleChange=(e)=>{
-    // console.log(e.target)
-    const {name,value} = e.target;
-    setInputs({...inputs,[name]:value})
-  }
-  const handleSubmit = (e)=>{
-    e.preventDefault();
-    localStorage.setItem("name",inputs.name)
-    localStorage.setItem("email",inputs.email)
-    localStorage.setItem("password",inputs.password)
-    // localStorage.setItem("userInfo",JSON.stringify(inputs))
-    setInputs({
-      name:"",
-      email:"",
-      password:""
-    })
-  }
-  const handleRemove = ()=>{
-    localStorage.removeItem('name');
-    localStorage.removeItem("email")
-    localStorage.removeItem("password")
-  }
+  const [condition,setCondition] = useState(false)
   return (
     <div>
-       <form onSubmit={handleSubmit}>
-         <input type="text" value={inputs.name}
-         onChange={handleChange} name='name'/> <br /> <br />
-         <input type="email" value={inputs.email} 
-         onChange={handleChange} name='email'/> <br /> <br />
-         <input type="password" value={inputs.password}
-         onChange={handleChange} name="password"/> <br /> <br />
-         <input type="submit" value="Submit" />
-       </form>
-       {localStorage.getItem("name") && (
-        <h1>{localStorage.getItem("name")}</h1>
-       )}
-       <button onClick={handleRemove}>Remove</button>
+      <h1>My main file</h1>
+      <div id="container"></div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam rerum nesciunt accusamus ducimus ad, autem assumenda ut ratione nihil ex libero, nam laudantium. Voluptatem officiis molestias, ipsa ullam sequi unde.</p>
+      <button onClick={()=>setCondition(true)}>Show Modal</button>
+      <Modal condition={condition}>
+        <div>
+          <h1>Modal component</h1>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, ratione accusamus aliquam tempora debitis iure saepe pariatur dolores similique cupiditate vero sequi nisi fugit veniam sunt quod at. Maiores autem animi eos sunt iste ducimus minus magnam quod quo hic.</p>
+        </div>
+      </Modal>
+
     </div>
   )
 }
