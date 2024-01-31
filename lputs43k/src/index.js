@@ -2,13 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import UserProvider from './components/Providers/UserProvider';
+import Errorboundary from './Efficiency/ErrorBoundary.js/Errorboundary';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.Fragment>
-    <UserProvider>
+    <Errorboundary>
     <App />
-    </UserProvider>
+    </Errorboundary>
+    
+    
    
   </React.Fragment>
 );

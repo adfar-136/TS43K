@@ -615,3 +615,46 @@ export default function App() {
   )
 }
 
+createPortals 
+import React, { useState } from 'react'
+import Modal from './Modal'
+import "./App.css"
+export default function App() {
+  const [condition,setCondition] = useState(false)
+  return (
+    <div className='container'>
+      <h1>My main file</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam rerum nesciunt accusamus ducimus ad, autem assumenda ut ratione nihil ex libero, nam laudantium. Voluptatem officiis molestias, ipsa ullam sequi unde.</p>
+      <button onClick={()=>setCondition(true)}>Show Modal</button>
+      <Modal condition={condition}>
+        <div>
+          <h1>Modal component</h1>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos, ratione accusamus aliquam tempora debitis iure saepe pariatur dolores similique cupiditate vero sequi nisi fugit veniam sunt quod at. Maiores autem animi eos sunt iste ducimus minus magnam quod quo hic.</p>
+        </div>
+      </Modal>
+
+    </div>
+  )
+}
+
+
+import React, { Suspense, lazy } from 'react'
+const Compo1 = lazy(()=>import("./Efficiency/lazyloading/Compo1"));
+const Compo2 = lazy(()=>import("./Efficiency/lazyloading/Compo2"))
+
+export default function App() {
+  return (
+    <div>
+      <h1>Adfar RAsheed</h1>
+      <Suspense fallback={<h3>Please wait.....</h3>}>
+        <Compo1/>
+      </Suspense>
+      <Suspense fallback={<h1>Sabbr karo...</h1>}>
+       <Compo2/>
+      </Suspense>
+    </div>
+  )
+}
+
+
+
