@@ -658,3 +658,111 @@ export default function App() {
 
 
 
+//todo logic  
+import React, { useState } from 'react'
+import useList from './Customhooks/useList';
+
+export default function App() {
+
+  const [input,setInput] = useState("");
+  const {todo,push,pull} = useList()
+ const handleSubmit =(e)=>{
+    e.preventDefault()
+    push(input)
+ } 
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input type="text" value={input} onChange={(e)=>setInput(e.target.value)}/>
+        <input type="submit" value="ADD" />
+      </form>
+      {todo.map((item,index)=>
+      <>
+      <li>{item}</li>
+      <button onClick={()=>pull(index)}>Remove</button>
+      </>)}
+
+    </div>
+  )
+}
+
+
+useAuth 
+
+
+import React from 'react'
+import { useAuth } from './Provider/AuthContext'
+
+export default function App() {
+  const {isLoggedIn,login,logout} = useAuth()
+  console.log(isLoggedIn)
+  return (
+    <div>
+      {isLoggedIn ? (<>
+        <p>You are logged in</p>
+        <button onClick={()=>logout()}>Logout</button>
+      </>):(<>
+       <p>You are not logged in</p>
+       <button onClick={()=>login("Adddfar")}>Login</button>
+      </>)}
+    </div>
+  )
+}
+
+
+//ref 
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { useRef } from 'react'
+
+export default function App() {
+  const [input,setInput] = useState("")
+  const name = useRef("");
+  const email= useRef("");
+  const pass  =useRef("");
+  
+  useEffect(()=>{
+    if(name.current){
+      name.current.focus()
+    }
+  })
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    
+
+  }
+  const handleChange= (e)=>{
+    const value = e.target.value;
+    setInput(value)
+  }
+  return (
+    <div>
+      <form>
+        <input type="text" ref={name} onChange={handleChange}/>
+        <input type="email" ref={email}/>
+        <input type="password" ref={pass}/>
+        <button onClick={handleSubmit}>Submit</button>
+
+      </form>jhygjh
+      <h1>name:{name.current && name.current.value}</h1>
+      pass:{pass && pass.current.value}
+      email:{email && email.current.value}
+    </div>
+  )
+}
+
+//
+
+import React, { useRef } from 'react'
+
+export default function App() {
+  const divRef = useRef()
+  const handleDiv=()=>{
+    divRef.current.innerHTML="Hello Welocme"
+  }
+  return (
+    <div ref={divRef}>
+      <button onClick={handleDiv}>SHow text</button>
+    </div>
+  )
+}

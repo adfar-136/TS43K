@@ -1,0 +1,40 @@
+.container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 5fr;
+  margin: 40px;
+  max-height:90vh;
+}
+.container > h1{
+  padding: 30px;
+  text-align: center;
+  border: 2px solid red;
+}
+.row{
+  border: 2px solid red;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  gap: 10px;
+  padding: 10px;
+}
+.item2{
+  border: 2px solid blue;
+}
+.nav{
+  background-color: lightgray;
+  font-size: 18px;
+  border: none;
+  padding: 20px;
+  border-radius: 20px;
+}
+.nav-section li{
+    list-style: none;
+    border: none;
+    background-color: #2480dd;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
