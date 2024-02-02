@@ -17,9 +17,7 @@
   gap: 10px;
   padding: 10px;
 }
-.item2{
-  border: 2px solid blue;
-}
+
 .nav{
   background-color: lightgray;
   font-size: 18px;
@@ -37,4 +35,27 @@
     text-align: center;
     margin-bottom: 5px;
     cursor: pointer;
+}
+.inbox{
+  background-color: #2480dd;
+  padding: 40px;
+  border: none;
+  border-radius: 20px;
+  height: 50vh;
+}
+.inbox input{
+  padding: 30px;
+  border-radius: 30px;
+  width: 30%;
+}
+.inbox button{
+  background-color: aqua;
+  padding: 30px;
+  border-radius: 20px;
+}
+.inbox li{
+  
+  font-size: 25px;
+  font-weight: bold;
+  color: aliceblue;
 }
