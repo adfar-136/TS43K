@@ -1,20 +1,36 @@
-import React, { useState } from 'react'
-import "./App.css"
-import SideNav from './SideNav'
-import Mainsection from './Mainsection'
+import React, { useEffect, useState } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './COmponents/home/Home'
+import Signup from './COmponents/Signup/Signup'
+import Sign from './COmponents/Signin/Sign'
+import Profile from './Profile'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from './firebase'
+import Todo from './Todo'
+
 export default function App() {
-  const [active,setActive] =useState("INBOX")
+  const [user,setUser] = useState("");
+  useEffect(()=>{
+    onAuthStateChanged(auth,(user)=>{
+      if(user){
+        setUser(user.email)
+      }
+      else {
+        setUser("")
+      }
+    })
+  })
   return (
-    <div className='container'>
-      <h1>Adfar's Todo Application</h1>
-      <div className="row">
-         <div className='item  item1'>
-           <SideNav change={setActive}/>
-         </div>
-         <div className="item item2">
-            <Mainsection active={active}/>
-         </div>
-      </div>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/signin' element={<Sign/>}/>
+          <Route path='/profile' element={<Profile user={user}/>}/>
+          <Route path='/todo' element={<Todo user={user}/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }

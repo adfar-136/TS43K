@@ -1,0 +1,52 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: aquamarine;
+}
+.innerBox{
+   
+    padding: 35px;
+    background-color: burlywood;
+    border-radius: 20px;
+    width: 400px;
+
+}
+.footer button{
+    
+    width: 100%;
+    padding: 10px;
+    background-color: cadetblue;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold
+    
+}
+.footer b{
+    color: red;
+}
+.navigate{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.navigate li{
+    padding:10px 20px;
+    background-color: cadetblue;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    list-style: none;
+}
+.navigate li a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    color: white;
+}
